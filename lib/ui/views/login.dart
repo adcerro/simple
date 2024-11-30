@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:simpleapp/ui/controllers/user_controller.dart';
+import 'package:simpleapp/ui/views/homepage.dart';
 import 'package:simpleapp/ui/views/register.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _user = TextEditingController();
+  final _email = TextEditingController();
   final _password = TextEditingController();
   UserController userController = Get.find();
 
@@ -39,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                       size: MediaQuery.sizeOf(context).width / 3,
                     ),
                     TextFormField(
-                      controller: _user,
+                      controller: _email,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Ingrese correo';
@@ -70,8 +71,15 @@ class _LoginPageState extends State<LoginPage> {
                     TextButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            if (await userController.logIn(
-                                email: _user.text, password: _password.text)) {
+                            if (!await userController.logIn(
+                                email: _email.text, password: _password.text)) {
+                              _email.clear();
+                              _password.clear();
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (context) {
+                                return const HomePage();
+                              }));
+                            } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       backgroundColor: Colors.red,

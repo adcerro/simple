@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simpleapp/data/datasources/i_user_datasource.dart';
-import 'package:simpleapp/domain/models/user.dart';
 
 class UserDataSource extends IUserDataSource {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
@@ -34,5 +33,10 @@ class UserDataSource extends IUserDataSource {
     } catch (e) {
       return false;
     }
+  }
+
+  @override
+  User? getLoggedUser() {
+    return _firebaseAuth.currentUser;
   }
 }

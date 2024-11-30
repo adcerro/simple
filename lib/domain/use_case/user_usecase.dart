@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simpleapp/domain/repositories/i_user_repository.dart';
 
 class UserUseCase {
@@ -8,4 +9,5 @@ class UserUseCase {
   Future<bool> logOut() => _repository.logOut();
   Future<bool> register({required String email, required String password}) =>
       _repository.register(email: email, password: password);
+  User? getLoggedUser() => _repository.getLoggedUser();
 }

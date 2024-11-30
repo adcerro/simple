@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../../domain/use_case/user_usecase.dart';
 import 'package:get/get.dart';
 
@@ -8,4 +10,5 @@ class UserController extends GetxController {
   Future<bool> logOut() => userUseCase.logOut();
   Future<bool> register({required String email, required String password}) =>
       userUseCase.register(email: email, password: password);
+  User? getLoggedUser() => userUseCase.getLoggedUser();
 }
