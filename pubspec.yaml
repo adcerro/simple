@@ -65,6 +65,12 @@ flutter:
   assets:
   # https://www.pexels.com/photo/black-fujifilm-dslr-camera-90946/
     - assets/camera.jpg
+  # Photo by Jayr: https://www.pexels.com/photo/black-dslr-cameras-on-brown-wooden-table-11621132/
+    - assets/camera1.jpg
+  # Photo by 喜涛 张: https://www.pexels.com/photo/close-up-shot-of-a-black-digital-camera-on-white-surface-10677345/
+    - assets/camera2.jpg
+  # Photo by IslandHopper X: https://www.pexels.com/photo/close-up-of-characteristics-on-screen-on-professional-camera-14840705/
+    - assets/camera3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

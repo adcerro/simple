@@ -8,6 +8,12 @@ import '../controllers/user_controller.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
   final UserController userController = Get.find();
+  final List<Image> images = [
+    Image.asset("assets/camera.jpg"),
+    Image.asset("assets/camera1.jpg"),
+    Image.asset("assets/camera2.jpg"),
+    Image.asset("assets/camera3.jpg")
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +30,7 @@ class HomePage extends StatelessWidget {
                   return const LoginPage();
                 }));
               },
+              tooltip: "Cerrar sesión",
               icon: const Icon(Icons.logout))
         ],
       ),
@@ -53,12 +60,14 @@ class HomePage extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return ProductPage(product: "Item $index");
+                              return ProductPage(
+                                  product: "Item $index",
+                                  photo: images[index % images.length]);
                             }));
                           },
-                          leading: Image.asset(
-                            "assets/camera.jpg",
-                          ),
+                          minTileHeight: 60,
+                          leading: SizedBox(
+                              width: 80, child: images[index % images.length]),
                           title: Text("Item $index"),
                           tileColor: Theme.of(context).splashColor,
                           shape: RoundedRectangleBorder(

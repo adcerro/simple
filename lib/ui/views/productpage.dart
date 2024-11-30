@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class ProductPage extends StatelessWidget {
   final String product;
-  const ProductPage({super.key, required this.product});
+  final Image? photo;
+  const ProductPage({super.key, required this.product, this.photo});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class ProductPage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset("assets/camera.jpg"),
+              photo ?? Icon(Icons.broken_image),
               Text(
                 product,
                 style: Theme.of(context).textTheme.titleLarge,
