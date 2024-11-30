@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:simpleapp/ui/controllers/user_controller.dart';
 import 'package:simpleapp/ui/views/homepage.dart';
@@ -77,7 +76,7 @@ class _LoginPageState extends State<LoginPage> {
                               _password.clear();
                               Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(builder: (context) {
-                                return const HomePage();
+                                return HomePage();
                               }));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
