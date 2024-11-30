@@ -53,13 +53,12 @@ class HomePage extends StatelessWidget {
                           onTap: () {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
-                              return ProductPage(product: index.toString());
+                              return ProductPage(product: "Item $index");
                             }));
                           },
-                          horizontalTitleGap: 20,
-                          leading: CircleAvatar(
-                              backgroundColor: Theme.of(context).cardColor,
-                              child: const Icon(Icons.shop_2)),
+                          leading: Image.asset(
+                            "assets/camera.jpg",
+                          ),
                           title: Text("Item $index"),
                           tileColor: Theme.of(context).splashColor,
                           shape: RoundedRectangleBorder(
