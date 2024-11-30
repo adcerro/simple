@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:simpleapp/ui/views/homepage.dart';
 
 import '../controllers/user_controller.dart';
 
@@ -71,6 +72,12 @@ class _RegisterPageState extends State<RegisterPage> {
                           if (_formKey.currentState!.validate()) {
                             if (await userController.register(
                                 email: _email.text, password: _password.text)) {
+                              userController.logIn(
+                                  email: _email.text, password: _password.text);
+                              Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(builder: (builder) {
+                                return HomePage();
+                              }));
                             } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(

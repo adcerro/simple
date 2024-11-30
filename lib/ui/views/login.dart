@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                     TextButton(
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            if (!await userController.logIn(
+                            if (await userController.logIn(
                                 email: _email.text, password: _password.text)) {
                               _email.clear();
                               _password.clear();
